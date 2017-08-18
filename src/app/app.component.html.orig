@@ -1,0 +1,7 @@
+<router-outlet></router-outlet>
+<<<<<<< HEAD
+<h2>Hello</h2>
+=======
+<h2>AJTAG5 Test2</h2>
+>>>>>>> 51decc83221c3ea0ff1905c93eec1672c9825c48
+<h2>Pepsi Test 3</h2>
