@@ -9,14 +9,19 @@ import { environment } from '../environments/environment';
 import { routing } from './app.routing';
 
 import { FirebaseService } from './services/firebase.service';
+import { AuthGuard } from './services/auth-guard.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AdminComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,7 @@ import { HomeComponent } from './components/home/home.component';
     AngularFireAuthModule,
     routing,
   ],
-  providers: [FirebaseService],
+  providers: [FirebaseService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     //Testing database; Remove later;
     //Testing Login
-    this.firebase.signIn({username: 'timothypaulcunningham@gmail.com', password: 'password'});
+    //this.firebase.signIn({username: 'timothypaulcunningham@gmail.com', password: 'password'});
 
     //Getting All Menus
     this.firebase.getMenus()

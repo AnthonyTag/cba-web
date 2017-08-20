@@ -19,6 +19,7 @@ export class FirebaseService {
             if(result) {
                 this.userID = result.uid;
                 this.loggedIn = true;
+                window.localStorage.setItem("cba_logged_in", "true");
 
                 let menusSubscription = this.database.list('menus').subscribe(result => this.menus = result);
                 let itemsSubscription = this.database.list('items').subscribe(result => this.items = result);
@@ -32,28 +33,27 @@ export class FirebaseService {
                 }
                 this.loggedIn = false;
                 this.userID = null;
+                window.localStorage.setItem("cba_logged_in", "false");
             }
         });
     }
 
     getloginStatus() {
-        return Observable.interval(250).map(() => {
-            return new Object({
-                loggedIn: this.loggedIn,
-                UID: this.userID
-            });
-        });
+        return Observable.interval(250).map(() => this.loggedIn).distinctUntilChanged();
     }
 
-    signIn(credentials) {
+    signIn(credentials, callback, caller) {
         this.auth.auth.signInWithEmailAndPassword(credentials.username, credentials.password)
+            .then(result => {
+                callback({value: true}, caller);
+            })
             .catch((error) => {
-                alert("Could not log in!");
+                callback({value: false}, caller);
             });
     }
 
     signOut() {
-        this.auth.auth.signOut();
+        this.auth.auth.signOut();      
         this.loggedIn = false;
         this.userID = null;
     }
