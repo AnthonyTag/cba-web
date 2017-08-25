@@ -15,13 +15,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { AdminResetComponent } from './components/admin-reset/admin-reset.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AdminComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    AdminResetComponent
   ],
   imports: [
     BrowserModule,
